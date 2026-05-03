@@ -175,6 +175,7 @@
                          %>
                         <div style="font-size:11px; color:#666; margin-top:6px;">
                             👤 <%= booking[0] %><br/>
+                            🧑 <%= booking[3] != null ? booking[3] : "Chưa có tên" %><br/>
                             ⏱️ <%= booking[2] %>
                         </div>
                         <% } %>

@@ -100,12 +100,12 @@
                 <h3>Đặt Phòng</h3>
                 <p>Quản lý đặt phòng của khách</p>
             </a>
-            <a href="customer.jsp" class="menu-card">
+            <a href="CustomerServlet" class="menu-card">
                 <div class="icon">👥</div>
                 <h3>Khách Hàng</h3>
                 <p>Danh sách khách hàng</p>
             </a>
-            <a href="invoice.jsp" class="menu-card">
+            <a href="BillServlet" class="menu-card">
                 <div class="icon">🧾</div>
                 <h3>Hóa Đơn</h3>
                 <p>Quản lý thanh toán</p>

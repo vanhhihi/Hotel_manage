@@ -198,8 +198,10 @@
                         if (bookingMap != null && bookingMap.containsKey(room[0])) {
                             String[] booking = bookingMap.get(room[0]);
                     %>
+
                     <div style="font-size:11px; color:#666; margin-top:6px;">
                         👤 <%= booking[0] %><br/>
+                        🧑 <%= booking[3] != null ? booking[3] : "Chưa có tên" %><br/>
                         ⏱️ <%= booking[2] %>
                     </div>
                     <% } %>
@@ -222,54 +224,60 @@
 
         <!-- Tab Theo Giờ -->
         <div class="tab-content active" id="tab-hourly">
-            <div class="form-group">
-                <label>Giá theo giờ</label>
-                <input type="text" id="hourly_price_display" readonly />
-            </div>
-            <div class="form-group">
-                <label>Thời gian bắt đầu</label>
-                <input type="text" id="hourly_checkin" readonly />
-            </div>
-            <p style="font-size:13px; color:#999; margin-bottom:14px;">
-                ※ Khách trả phòng khi bấm "Trả Phòng"
-            </p>
-            <form action="RoomServlet" method="post">
-                <input type="hidden" name="action" value="book" />
-                <input type="hidden" name="type" value="hourly" />
-                <input type="hidden" name="room_number" id="hourly_room_number" />
-                <input type="hidden" name="username" value="<%= username %>" />
-                <div class="popup-buttons">
-                    <button type="submit" class="btn btn-confirm">✔ Xác Nhận</button>
-                    <button type="button" class="btn btn-cancel" onclick="closePopup()">✖ Hủy</button>
-                </div>
-            </form>
+    <form action="RoomServlet" method="post"accept-charset="UTF-8">
+        <input type="hidden" name="action" value="book" />
+        <input type="hidden" name="type" value="hourly" />
+        <input type="hidden" name="room_number" id="hourly_room_number" />
+        <input type="hidden" name="username" value="<%= username %>" />
+        <div class="form-group">
+            <label>Giá theo giờ</label>
+            <input type="text" id="hourly_price_display" readonly />
         </div>
+        <div class="form-group">
+            <label>Thời gian bắt đầu</label>
+            <input type="text" id="hourly_checkin" readonly />
+        </div>
+        <div class="form-group">
+            <label>Tên khách hàng</label>
+            <input type="text" name="customer" placeholder="Nhập tên khách hàng" required />
+        </div>
+        <p style="font-size:13px; color:#999; margin-bottom:14px;">
+            ※ Khách trả phòng khi bấm "Trả Phòng"
+        </p>
+        <div class="popup-buttons">
+            <button type="submit" class="btn btn-confirm">✔ Xác Nhận</button>
+            <button type="button" class="btn btn-cancel" onclick="closePopup()">✖ Hủy</button>
+        </div>
+    </form>
+</div>
 
         <!-- Tab Theo Đêm -->
         <div class="tab-content" id="tab-nightly">
-            <div class="form-group">
-                <label>Giá theo đêm</label>
-                <input type="text" id="nightly_price_display" readonly />
-            </div>
-            <div class="form-group">
-                <label>Số đêm</label>
-                <input type="number" id="nightly_nights" min="1" value="1"
-                       oninput="calcNightlyPrice()" />
-            </div>
-            <div class="price-display" id="nightly_total">Tổng: 0 đ</div>
-            <form action="RoomServlet" method="post">
-                <input type="hidden" name="action" value="book" />
-                <input type="hidden" name="type" value="nightly" />
-                <input type="hidden" name="room_number" id="nightly_room_number" />
-                <input type="hidden" name="username" value="<%= username %>" />
-                <input type="hidden" name="nights" id="nightly_nights_hidden" value="1" />
-                <div class="popup-buttons">
-                    <button type="submit" class="btn btn-confirm" onclick="setNights()">✔ Xác Nhận</button>
-                    <button type="button" class="btn btn-cancel" onclick="closePopup()">✖ Hủy</button>
-                </div>
-            </form>
+    <form action="RoomServlet" method="post"accept-charset="UTF-8">
+        <input type="hidden" name="action" value="book" />
+        <input type="hidden" name="type" value="nightly" />
+        <input type="hidden" name="room_number" id="nightly_room_number" />
+        <input type="hidden" name="username" value="<%= username %>" />
+        <input type="hidden" name="nights" id="nightly_nights_hidden" value="1" />
+        <div class="form-group">
+            <label>Giá theo đêm</label>
+            <input type="text" id="nightly_price_display" readonly />
         </div>
-    </div>
+        <div class="form-group">
+            <label>Số đêm</label>
+            <input type="number" id="nightly_nights" min="1" value="1"
+                   oninput="calcNightlyPrice()" />
+        </div>
+        <div class="form-group">
+            <label>Tên khách hàng</label>
+            <input type="text" name="customer" placeholder="Nhập tên khách hàng" required />
+        </div>
+        <div class="price-display" id="nightly_total">Tổng: 0 đ</div>
+        <div class="popup-buttons">
+            <button type="submit" class="btn btn-confirm" onclick="setNights()">✔ Xác Nhận</button>
+            <button type="button" class="btn btn-cancel" onclick="closePopup()">✖ Hủy</button>
+        </div>
+    </form>
 </div>
 
 <!-- Form ẩn trả phòng -->
