@@ -6,6 +6,9 @@
         response.sendRedirect("login.jsp");
         return;
     }
+     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
 %>
 <!DOCTYPE html>
 <html>
@@ -76,7 +79,7 @@
         <h1>🏨 Quản Lý Khách Sạn</h1>
         <div class="user-info">
             👤 <%= username %> (<%= role %>)
-            <a href="HomeServlet">Đăng xuất</a>
+            <a href="LogoutServlet">Đăng xuất</a>
         </div>
     </div>
 
@@ -87,12 +90,12 @@
         </div>
 
         <div class="menu-grid">
-            <a href="room.jsp" class="menu-card">
+            <a href="RoomServlet" class="menu-card">
                 <div class="icon">🛏️</div>
                 <h3>Quản Lý Phòng</h3>
                 <p>Xem, thêm, sửa, xóa phòng</p>
             </a>
-            <a href="booking.jsp" class="menu-card">
+            <a href="RoomServlet?page=booking" class="menu-card">
                 <div class="icon">📋</div>
                 <h3>Đặt Phòng</h3>
                 <p>Quản lý đặt phòng của khách</p>
